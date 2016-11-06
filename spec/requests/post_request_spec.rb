@@ -2,20 +2,17 @@ require 'rails_helper'
 
 RSpec.describe 'Post request' do
   describe "GET index" do
-    it "show all the index page" do
-      binding.pry
-      get "/posts"
-      binding.pry
+    before(:each) { get posts_path }
 
+    it "show all the index page" do
       expect(response).to have_http_status(200)
-      binding.pry
     end
   end
 
   describe "GET show" do
     before(:each) do
       post = create :post
-      get "/posts/#{post.id}"
+      get post_path(post)
     end
 
     it { expect(response.status).to eq 200 }
@@ -25,7 +22,7 @@ RSpec.describe 'Post request' do
     context "Edit post exist" do
       before(:each) do
         post = create :post
-        get "/posts/#{post.id}/edit"
+        get edit_post_path(post)
       end
 
       it { expect(response.status).to eq 200 }
@@ -33,7 +30,7 @@ RSpec.describe 'Post request' do
 
     context "Edit post not exist" do
       before(:each) do
-        get "/posts/10/edit"
+        get edit_post_path(10)
       end
 
       it { expect(response.status).to eq 404 }

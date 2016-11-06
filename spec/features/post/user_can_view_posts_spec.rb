@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User can view posts', type: :feature, js: true do
   context "Don't have any post" do
     before(:each) do
-      visit "/posts"
+      visit posts_path
     end
 
     it "Display no post message" do
@@ -15,7 +15,7 @@ RSpec.describe 'User can view posts', type: :feature, js: true do
     let!(:post) { create :post }
 
     before(:each) do
-      visit "/posts"
+      visit posts_path
     end
 
     it "show id, title" do
@@ -24,7 +24,7 @@ RSpec.describe 'User can view posts', type: :feature, js: true do
     end
 
     it "show edit button" do
-      expect(page).to have_link("Edit", href: "/posts/#{post.id}/edit")
+      expect(page).to have_link("Edit", href: edit_post_path(post))
     end
   end
 
@@ -32,14 +32,14 @@ RSpec.describe 'User can view posts', type: :feature, js: true do
     let!(:posts) { create_list :post, 15 }
 
     before(:each) do
-      visit "/posts"
+      visit posts_path
     end
 
     it "show 10 posts in first page" do
       posts[0..9].each do |post|
         expect(page).to have_content(post.title)
         expect(page).to have_content(post.id)
-        expect(page).to have_link("Edit", href: "/posts/#{post.id}/edit")
+        expect(page).to have_link("Edit", href: edit_post_path(post))
       end
     end
 
@@ -48,8 +48,7 @@ RSpec.describe 'User can view posts', type: :feature, js: true do
     end
 
     it "have link to next page", run: true do
-      # binding.pry
-      expect(page).to have_link("2", href: "/posts?page=2")
+      expect(page).to have_link("2", href: posts_path(page: 2))
     end
   end
 end

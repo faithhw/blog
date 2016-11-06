@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
-  validates :title, length: { maximum: 255, minimum: 20 }
-  validates :content, length: { maximum: 10000, minimum: 10 }
+  SETTINGS = Settings.model.post
 
-  paginates_per 10
+  validates :title, length: { maximum: SETTINGS.title_max_length, minimum: SETTINGS.title_min_length }
+  validates :content, length: { maximum: SETTINGS.content_max_length, minimum: SETTINGS.content_min_length }
+
+  paginates_per SETTINGS.per_page
 end

@@ -13,10 +13,10 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: mypassword
-  host: db
-  port: 3306
+  username: <%= ENV['mysql_username'] %>
+  password: <%= ENV['mysql_password'] %>
+  host: <%= ENV['mysql_host'] %>
+  port: <%= ENV['mysql_port'] %>
 
 development:
   <<: *default
