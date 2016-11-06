@@ -1,0 +1,5 @@
+[mysqld]
+innodb_large_prefix             = 1
+innodb_file_format              = barracuda
+innodb_file_per_table           = false
+innodb_flush_log_at_trx_commit  = 2

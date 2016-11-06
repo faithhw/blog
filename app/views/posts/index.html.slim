@@ -1,0 +1,24 @@
+h1 List post
+
+.container
+  - if @posts.present?
+    table class="table"
+      thead
+        tr
+          td
+            h3 Id
+          td
+            h3 Title
+      tbody
+        - @posts.each do |post|
+          tr.post-item
+            td
+              = post.id
+            td
+              = link_to "#{post.title}", post
+            td
+              = link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary"
+
+    = paginate @posts
+  - else
+    h1 No post
