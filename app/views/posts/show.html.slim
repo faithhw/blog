@@ -1,2 +1,15 @@
 h1 #{@post.title}
 p #{@post.content}
+- @post.comments.each do |comment|
+  li
+    = comment.content
+= form_for @comment do |f|
+  = f.hidden_field :post_id
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: "form-control", rows: 10
+  .form-group
+    = f.submit "Submit"
+    
+- if @comment.errors.present?
+  p #{@comment.errors.full_messages}

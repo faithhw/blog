@@ -7,5 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 100.times do
-  Post.create(title: Faker::Lorem.sentence(7, true), content: Faker::Lorem.paragraph)
+  post = Post.create(title: Faker::Lorem.sentence(7, true), content: Faker::Lorem.paragraph)
+
+  10.times do
+    comment = Comment.create(post: post, content: Faker::Lorem.paragraph)
+  end
 end

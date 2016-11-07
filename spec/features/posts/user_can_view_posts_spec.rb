@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User can view posts', type: :feature, js: true do
+RSpec.describe 'User can view posts', type: :feature do
   context "Don't have any post" do
     before(:each) do
       visit posts_path

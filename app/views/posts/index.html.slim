@@ -18,6 +18,8 @@ h1 List post
               = link_to "#{post.title}", post
             td
               = link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary"
+            td
+              = link_to "Delete", post_path(post), method: :delete, class: "btn btn-xs btn-primary"
 
     = paginate @posts
   - else
