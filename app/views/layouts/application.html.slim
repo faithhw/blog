@@ -7,8 +7,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    p id="notice"
-      = flash[:notice]
-    p id="alert"
-      = flash[:alert]
+    = render 'shared/header'
+    = render 'shared/flash'
     = yield
+    = render 'shared/footer'
