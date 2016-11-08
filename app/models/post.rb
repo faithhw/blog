@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   SETTINGS = Settings.model.post
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :title, length: { maximum: SETTINGS.title_max_length, minimum: SETTINGS.title_min_length }
   validates :content, length: { maximum: SETTINGS.content_max_length, minimum: SETTINGS.content_min_length }
