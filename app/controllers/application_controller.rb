@@ -7,5 +7,4 @@ class ApplicationController < ActionController::Base
 
   include ErrHandler
 
-
 end

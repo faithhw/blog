@@ -5,11 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Seeding...."
 
-100.times do
-  post = Post.create(title: Faker::Lorem.sentence(7, true), content: Faker::Lorem.paragraph)
+10.times do |i|
+  user = User.create(email: "email#{i}@gmail.com", password: "123456")
+  100.times do
+    post = user.posts.create(title: user.email Faker::Lorem.sentence(7, true), content: Faker::Lorem.paragraph)
 
-  10.times do
-    comment = Comment.create(post: post, content: Faker::Lorem.paragraph)
+    10.times do
+      tmp_user = User.take
+      comment = tmp_user.comments.create(post: post, content: Faker::Lorem.paragraph)
+    end
   end
 end
+
+puts "End seeding."

@@ -48,6 +48,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
+    cancancan (1.15.0)
     capybara (2.10.1)
       addressable
       mime-types (>= 1.16)
@@ -260,6 +261,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  cancancan
   capybara
   coffee-rails (~> 4.2)
   config

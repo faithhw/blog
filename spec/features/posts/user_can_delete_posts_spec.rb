@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "User can delete posts" do
+  let!(:user) { create :user }
+  before(:each) { sign_in user }
+
   context "Delete exist post" do
-    let!(:post) { create :post }
+    let!(:post) { create :post, user: user }
 
     before(:each) do
       visit posts_path

@@ -10,9 +10,14 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "PUT update" do
+    let!(:user) { create :user }
+    before(:each) do
+      sign_in user
+    end
+
     context "Update success" do
       it "redirect to show" do
-        post = create :post
+        post = create :post, user: user
 
         #allow(Post).to receive(:update) { true }
         allow_any_instance_of(Post).to receive(:update) { true }
@@ -24,7 +29,7 @@ RSpec.describe PostsController, type: :controller do
 
     context "Update failed" do
       it "reder edit page" do
-        post = create :post
+        post = create :post, user: user
 
         allow_any_instance_of(Post).to receive(:update) { false }
         process :update, method: :post, params: { id: post.id, post: { title: 'test 123', content: 'test4566' } }

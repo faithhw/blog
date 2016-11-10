@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   SETTINGS = Settings.model.post
 
+  belongs_to :user
   has_many :comments, dependent: :destroy
 
   validates :title, length: { maximum: SETTINGS.title_max_length, minimum: SETTINGS.title_min_length }
