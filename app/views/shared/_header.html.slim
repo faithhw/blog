@@ -1,7 +1,6 @@
-- user = current_user.decorate
-
 h2 
   - if user_signed_in?
+    - user = current_user.decorate
     = link_to user.name, user_path(user)
 p
   = link_to "Home", root_path
