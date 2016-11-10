@@ -10,7 +10,7 @@ puts "Seeding...."
 10.times do |i|
   user = User.create(email: "email#{i}@gmail.com", password: "123456")
   100.times do
-    post = user.posts.create(title: user.email Faker::Lorem.sentence(7, true), content: Faker::Lorem.paragraph)
+    post = user.posts.create(title: Faker::Lorem.sentence(7, true), content: Faker::Lorem.paragraph)
 
     10.times do
       tmp_user = User.take

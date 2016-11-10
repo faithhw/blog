@@ -1,8 +1,13 @@
 h1 #{@post.title}
+
 p #{@post.content}
+
+h2 Comments
+
 - @post.comments.each do |comment|
   li
     = comment.content
+    
 = form_for @comment do |f|
   = f.hidden_field :post_id
   .form-group

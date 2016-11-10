@@ -1,7 +1,9 @@
+- posts = @posts
+
 h1 List post
 
 .container
-  - if @posts.present?
+  - if posts.present?
     table class="table"
       thead
         tr
@@ -9,18 +11,22 @@ h1 List post
             h3 Id
           td
             h3 Title
+          td 
+            h3 Author
       tbody
-        - @posts.each do |post|
+        - posts.each do |post|
           tr.post-item
             td
               = post.id
             td
               = link_to "#{post.title}", post
+            td 
+              = "#{post.user.decorate.name}"
             td
               = link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary"
             td
               = link_to "Delete", post_path(post), method: :delete, class: "btn btn-xs btn-primary"
 
-    = paginate @posts
+    = paginate posts
   - else
     h1 No post

@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
-  # before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
-  load_and_authorize_resource
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
     @posts = Post.page(params[:page])
   end
 
   def show
-    @comment = @post.comments.build
+    @comment = Comment.new(post: @post)
   end
 
   def new

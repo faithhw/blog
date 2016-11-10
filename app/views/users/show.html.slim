@@ -1,0 +1,34 @@
+- user = @data[:user].decorate
+- posts = @data[:posts]
+
+h1 #{user.email}
+
+h2 Posts
+
+- if posts.present?
+  table class="table"
+    thead
+      tr
+        td
+          h3 Id
+        td
+          h3 Title
+        td 
+          h3 Author
+    tbody
+      - posts.each do |post|
+        tr.post-item
+          td
+            = post.id
+          td
+            = link_to "#{post.title}", post
+          td 
+            = "#{user.name}"
+          td
+            = link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary"
+          td
+            = link_to "Delete", post_path(post), method: :delete, class: "btn btn-xs btn-primary"
+
+  = paginate posts
+- else
+  h1 No post

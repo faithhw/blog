@@ -40,7 +40,7 @@ RSpec.describe 'Post request' do
           get edit_post_path(post)
         end
 
-        it { expect(response.status).to eq 302 }
+        it { expect(response.status).to eq 401 }
       end
 
       context "Edit own post" do

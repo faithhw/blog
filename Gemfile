@@ -55,6 +55,13 @@ gem 'devise'
 
 # for authenticated
 gem 'cancancan'
+
+# install active model for drapper below 3.0
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+
+# for view decorator
+gem 'draper'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platform: :mri use pry-byebug below

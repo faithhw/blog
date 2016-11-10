@@ -5,7 +5,11 @@ module ErrHandler
     end
 
     base.rescue_from CanCan::AccessDenied do |exception|
-      redirect_to new_user_session_path
+      if user_signed_in?
+        render :e401, status: 401
+      else
+        redirect_to new_user_session_path
+      end
     end
   end
 end
