@@ -23,9 +23,9 @@ h1 List post
             td 
               = "#{post.user.decorate.name}"
             td
-              = link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary"
+              = link_to "Edit", edit_post_path(post), class: "ui button"
             td
-              = link_to "Delete", post_path(post), method: :delete, class: "btn btn-xs btn-primary"
+              = link_to "Delete", post_path(post), method: :delete, class: "ui button"
 
     = paginate posts
   - else

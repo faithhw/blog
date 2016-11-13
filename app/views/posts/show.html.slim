@@ -8,12 +8,12 @@ h2 Comments
   li
     = comment.content
     
-= form_for @comment do |f|
+= form_for @comment, html: { class: "ui form" } do |f|
   = f.hidden_field :post_id
-  .form-group
+  .field
     = f.label :content
-    = f.text_area :content, class: "form-control", rows: 10
-  .form-group
+    = f.text_area :content, rows: 10
+  .field
     = f.submit "Submit"
     
 - if @comment.errors.present?

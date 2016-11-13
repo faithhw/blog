@@ -6,7 +6,7 @@ h1 #{user.email}
 h2 Posts
 
 - if posts.present?
-  table class="table"
+  table class="ui celled table"
     thead
       tr
         td
@@ -25,9 +25,9 @@ h2 Posts
           td 
             = "#{user.name}"
           td
-            = link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary"
+            = link_to "Edit", edit_post_path(post), class: "ui button"
           td
-            = link_to "Delete", post_path(post), method: :delete, class: "btn btn-xs btn-primary"
+            = link_to "Delete", post_path(post), method: :delete, class: "ui button"
 
   = paginate posts
 - else

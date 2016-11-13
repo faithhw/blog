@@ -5,14 +5,14 @@ ul
     li
       = msg
 
-= form_for @post do |f|
-  .form-group
+= form_for @post, html: { class: "ui form" } do |f|
+  .field
     = f.label :title
-    = f.text_field :title, class: "form-control"
+    = f.text_field :title
 
-  .form-group
+  .field
     = f.label :content
-    = f.text_area :content, class: "form-control", rows: 10
+    = f.text_area :content, rows: 10
 
-  .form-group
-    = f.submit 'Submit'
+  .field
+    = f.submit 'Submit', class: "ui button"

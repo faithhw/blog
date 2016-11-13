@@ -1,0 +1,15 @@
+- user = @user.decorate
+
+h1 Edit user
+
+ul
+- user.errors.full_messages.each do |msg|
+  li
+    = msg
+= form_for user, html: { class: "ui form" } do |f|
+  .field
+    = f.label :avatar
+    = f.file_field :avatar
+    
+  .field
+    = f.submit "Submit"

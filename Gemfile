@@ -36,7 +36,8 @@ gem 'slim-rails'
 
 gem 'kaminari'
 
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
+gem 'semantic-ui-sass'
 
 # manage constants
 gem 'config'
@@ -57,10 +58,16 @@ gem 'devise'
 gem 'cancancan'
 
 # install active model for drapper below 3.0
-gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+# gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 
 # for view decorator
-gem 'draper'
+gem 'draper', '~> 3.0.0.pre1'
+
+# for image processing
+gem 'carrierwave'
+
+# for multiple version image upload
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
