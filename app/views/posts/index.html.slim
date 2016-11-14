@@ -1,32 +1,22 @@
 - posts = @posts
-
-h1 List post
-
-.container
-  - if posts.present?
-    table class="table"
-      thead
-        tr
-          td
-            h3 Id
-          td
-            h3 Title
-          td 
-            h3 Author
-      tbody
+#body
+  
+  .ui.container
+    h1 List post
+    div class="ui doubling four column grid"
+      - if posts.present?
         - posts.each do |post|
-          tr.post-item
-            td
+          div class="column"
+            p
               = post.id
-            td
-              = link_to "#{post.title}", post
-            td 
+            p
+              = link_to "#{post.title}", post, class: "post-item"
+            p
               = "#{post.user.decorate.name}"
-            td
+            p
               = link_to "Edit", edit_post_path(post), class: "ui button"
-            td
-              = link_to "Delete", post_path(post), method: :delete, class: "ui button"
-
+            p
+              = link_to "Delete", post_path(post), method: :delete, class: "ui button"        
+      - else
+        h1 No post
     = paginate posts
-  - else
-    h1 No post

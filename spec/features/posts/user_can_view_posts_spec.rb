@@ -44,7 +44,7 @@ RSpec.describe 'User can view posts', type: :feature do
     end
 
     it "number of posts is 10" do
-      expect(page).to have_css('tr.post-item', count: 10)
+      expect(page).to have_css('.post-item', count: 10)
     end
 
     it "have link to next page", run: true do

@@ -1,15 +1,29 @@
-h2 
-  - if user_signed_in?
-    - user = current_user.decorate
-    = link_to user.name, user_path(user)
-p
-  = link_to "Home", root_path
-p
-  - if user_signed_in?
-    = link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-xs btn-primary"
-p
-  - if user_signed_in?
-    = link_to "Edit Profile", edit_user_path(user)
-p
-  - if user_signed_in?
-    = image_tag user.avatar.big
+#header
+  div class="ui grid container"
+    div class="two wide column"
+      div
+        = image_tag(asset_path("logo.png"), class: "logo")
+    div class="ten wide column"
+      div class="ui secondary menu"
+        div class="active item"
+          = link_to "Home", root_path
+        div class="item"
+          = link_to "Friends"
+        div class="item"
+          = link_to "Message"
+    div class="four wide column"
+      div class="ui secondary menu"    
+        - if user_signed_in?
+          - user = current_user.decorate
+          .avatar
+            = image_tag user.avatar.medium, class: "ui middle aligned mini image"
+          .ui.item
+            = link_to user.name, user_path(user)
+          .ui.item
+           = link_to "Sign out", destroy_user_session_path, method: :delete
+            
+        - else
+          div class="ui item"
+            = link_to "Sign in", new_user_session_path
+          div class="ui item"
+            = link_to "Sign up", new_user_registration_path
