@@ -14,9 +14,9 @@
             p
               = "#{post.user.decorate.name}"
             p
-              = link_to "Edit", edit_post_path(post), class: "ui button"
+              = link_to "Edit", edit_post_path(post)
             p
-              = link_to "Delete", post_path(post), method: :delete, class: "ui button"        
+              = link_to "Delete", post_path(post), method: :delete    
       - else
         h1 No post
     = paginate posts
