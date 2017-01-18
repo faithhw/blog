@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def show
     # @comment = Comment.new(post: @post)
     @comment = Comment.new
+    @comment.post = @post
   end
 
   def new
@@ -47,7 +48,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-    binding.pry
+    # binding.pry
   end
 
   def post_params

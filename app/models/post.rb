@@ -2,7 +2,8 @@ class Post < Sequel::Model
   SETTINGS = Settings.model.post
 
   many_to_one :user
-  one_to_many :comments, dependent: :destroy
+  # one_to_many :comments, dependent: :destroy
+  one_to_many :comments
 
   # validates :title, length: { maximum: SETTINGS.title_max_length, minimum: SETTINGS.title_min_length }
   # validates :content, length: { maximum: SETTINGS.content_max_length, minimum: SETTINGS.content_min_length }

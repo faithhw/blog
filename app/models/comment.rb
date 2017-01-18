@@ -1,4 +1,4 @@
-class Comment < ApplicationRecord
+class Comment < Sequel::Model
   SETTINGS = Settings.model.comment
 
   many_to_one :post
