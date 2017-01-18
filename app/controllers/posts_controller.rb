@@ -3,11 +3,13 @@ class PostsController < ApplicationController
   authorize_resource
 
   def index
-    @posts = Post.page(params[:page])
+    # @posts = Post.page(params[:page])
+    @posts = Post.all
   end
 
   def show
-    @comment = Comment.new(post: @post)
+    # @comment = Comment.new(post: @post)
+    @comment = Comment.new
   end
 
   def new
@@ -45,6 +47,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+    binding.pry
   end
 
   def post_params

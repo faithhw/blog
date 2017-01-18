@@ -12,11 +12,11 @@
             p
               = link_to "#{post.title}", post, class: "post-item"
             p
-              = "#{post.user.decorate.name}"
+              = "#{post.user.email}"
             p
               = link_to "Edit", edit_post_path(post)
             p
               = link_to "Delete", post_path(post), method: :delete    
       - else
         h1 No post
-    = paginate posts
+    / = paginate posts

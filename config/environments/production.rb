@@ -81,6 +81,34 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
+    # Allowed options: :sql, :ruby.
+  config.sequel.schema_format = :sql
+
+  # Whether to dump the schema after successful migrations.
+  # Defaults to false in production and test, true otherwise.
+  config.sequel.schema_dump = true
+
+  # These override corresponding settings from the database config.
+  config.sequel.max_connections = 16
+  config.sequel.search_path = %w(mine public)
+
+  # Configure whether database's rake tasks will be loaded or not.
+  #
+  # If passed a String or Symbol, this will replace the `db:` namespace for
+  # the database's Rake tasks.
+  #
+  # ex: config.sequel.load_database_tasks = :sequel
+  #     will results in `rake db:migrate` to become `rake sequel:migrate`
+  #
+  # Defaults to true
+  config.sequel.load_database_tasks = true
+
+  # This setting disabled the automatic connect after Rails init
+  config.sequel.skip_connect = false
+
+  # If you want to use a specific logger
+  # config.sequel.logger = MyLogger.new($stdout)
+
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+  # config.active_record.dump_schema_after_migration = false
 end

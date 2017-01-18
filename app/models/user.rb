@@ -1,10 +1,11 @@
-class User < ApplicationRecord
+class User < Sequel::Model
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  plugin :devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  one_to_many :posts, dependent: :destroy
+  one_to_many :comments, dependent: :destroy
 
-  mount_uploader :avatar, AvatarUploader
+  # mount_uploader :avatar, AvatarUploader
 end

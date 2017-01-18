@@ -8,6 +8,7 @@ RUN apt-get update -qq \
     libxslt1-dev \
     tzdata \
     xvfb \
+    mysql-client \
   && rm -rf /var/lib/apt/lists*
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \

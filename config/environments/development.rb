@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.
-  config.active_record.migration_error = :page_load
+  # config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -53,4 +53,32 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+    # Allowed options: :sql, :ruby.
+  # config.sequel.schema_format = :sql
+
+  # Whether to dump the schema after successful migrations.
+  # Defaults to false in production and test, true otherwise.
+  # config.sequel.schema_dump = true
+
+  # These override corresponding settings from the database config.
+  config.sequel.max_connections = 16
+  config.sequel.search_path = %w(mine public)
+
+  # Configure whether database's rake tasks will be loaded or not.
+  #
+  # If passed a String or Symbol, this will replace the `db:` namespace for
+  # the database's Rake tasks.
+  #
+  # ex: config.sequel.load_database_tasks = :sequel
+  #     will results in `rake db:migrate` to become `rake sequel:migrate`
+  #
+  # Defaults to true
+  config.sequel.load_database_tasks = true
+
+  # This setting disabled the automatic connect after Rails init
+  config.sequel.skip_connect = false
+
+  # If you want to use a specific logger
+  # config.sequel.logger = MyLogger.new($stdout)
 end
